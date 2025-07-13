@@ -30,7 +30,7 @@ impl Observer for ExampleObserver {
 }
 
 fn main() {
-    let mut subject = Subject::new("some subject state");
+    let mut subject = Subject::new("init");
 
     let observer1 = ExampleObserver::new("observer1");
     let observer2 = ExampleObserver::new("observer2");
@@ -39,4 +39,7 @@ fn main() {
     subject.attach(observer2.clone());
 
     subject.update();
+
+    subject.detach(observer1);
+    subject.detach(observer2);
 }
